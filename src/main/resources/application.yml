@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_USERNAME:localhost}:${DB_PORT:5432}/${DB_NAME:graph_ql_tutorial}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:root}
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true

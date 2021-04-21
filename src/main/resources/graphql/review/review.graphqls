@@ -1,0 +1,6 @@
+type Review implements Model {
+    id: ID!
+    user: User!
+    book: Book!
+    text: String!
+}

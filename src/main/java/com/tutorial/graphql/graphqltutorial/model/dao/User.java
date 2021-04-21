@@ -1,0 +1,35 @@
+package com.tutorial.graphql.graphqltutorial.model.dao;
+
+import com.tutorial.graphql.graphqltutorial.enumeration.UserType;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
+import static javax.persistence.EnumType.STRING;
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "`user`")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
+
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private Set<Review> reviews = new HashSet<>();
+
+    @Enumerated(value = STRING)
+    private UserType type;
+
+    private String name;
+}

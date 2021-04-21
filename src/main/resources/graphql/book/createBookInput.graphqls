@@ -1,0 +1,5 @@
+input CreateBookInput {
+    name: String!
+    genre: BookGenre!
+    description: String
+}

@@ -1,0 +1,38 @@
+type Query {
+    bookById(id: ID!): Book!
+    books: [Book!]!
+
+    authorById(id: ID!): Author!
+    authors: [Author!]!
+
+    userById(id: ID!): User!
+    users: [User!]!
+
+    reviewById(id: ID!): Review!
+    reviews: [Review!]!
+}
+
+
+
+query GetBooksAndAuthors {      #query declaration
+    books {                     #books Query
+        name                    #response field
+        pageCount               #response field
+    }
+
+    authors {                   #authors Query
+        firstName               #response field
+        lastName                #response field
+    }
+}
+
+
+query GetBookById($id: ID!) {      #query declaration with arg
+    book(id: $id) {                #book Query
+        name                       #response field
+        description                #response field
+        pageCount                  #response field
+    }
+}
+
+

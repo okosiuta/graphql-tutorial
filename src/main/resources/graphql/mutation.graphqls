@@ -1,0 +1,34 @@
+
+
+
+
+                    type Mutation {
+                        createBook(book: CreateBookInput!): Book
+                    }
+
+
+
+
+
+                    mutation CreateBook {                                                   #mutation declaration
+                        createBook(                                                         #createBook Mutation
+                            book: {                                                         #book input
+                                name: "book name",
+                                genre: FANTASY
+                                pageCount: 346
+                                authors: [{firstName: "first name", lastName: "lastname"}]  #author input
+                            }
+                        ) {
+                            id                                                              #response field
+                            name                                                            #response field
+                            pageCount                                                       #response field
+                            authors {                                                       #response field
+                                id                                                          #response field
+                                firstName                                                   #response field
+                                lastName                                                    #response field
+                            }
+                        }
+                    }
+
+
+
