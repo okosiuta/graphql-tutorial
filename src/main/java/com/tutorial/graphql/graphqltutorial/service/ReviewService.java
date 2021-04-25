@@ -11,7 +11,7 @@ public interface ReviewService {
 
     List<Review> findAll();
 
-    List<Review> findAllByBookId(long id);
+    List<Review> findAllByBookIds(List<Long> ids);
 
-    List<Review> findAllByUserId(long id);
+    List<Review> findAllByUserIds(List<Long> ids);
 }

@@ -11,5 +11,5 @@ public interface UserService {
 
     List<User> findAll();
 
-    User findByReviewId(long id);
+    List<User> findAllByReviewIds(List<Long> ids);
 }

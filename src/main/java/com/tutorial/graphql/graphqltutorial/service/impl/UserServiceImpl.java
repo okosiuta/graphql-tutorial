@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByReviewId(long id) {
-        return repository.findByReviewsIdIn(List.of(id));
+    public List<User> findAllByReviewIds(List<Long> ids) {
+        return repository.findAllByReviewIds(ids);
     }
 }

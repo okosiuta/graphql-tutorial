@@ -13,7 +13,7 @@ public interface BookService {
 
     List<Book> findAll();
 
-    List<Book> findAllByAuthorId(long id);
+    List<Book> findAllByAuthorIds(List<Long> ids);
 
-    Book findByReviewId(long id);
+    List<Book> findAllByReviewIds(List<Long> ids);
 }

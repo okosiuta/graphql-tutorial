@@ -31,12 +31,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> findAllByAuthorId(long id) {
-        return repository.findAllByAuthorsId(id);
+    public List<Book> findAllByAuthorIds(List<Long> ids) {
+        return repository.findAllByAuthorIds(ids);
     }
 
     @Override
-    public Book findByReviewId(long id) {
-        return repository.findByReviewsIdIn(List.of(id));
+    public List<Book> findAllByReviewIds(List<Long> ids) {
+        return repository.findAllByReviewIds(ids);
     }
 }

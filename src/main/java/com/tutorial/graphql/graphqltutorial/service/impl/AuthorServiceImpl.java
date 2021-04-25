@@ -26,7 +26,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> findAllByBookId(long id) {
-        return repository.findAllByBooksId(id);
+    public List<Author> findAllByBookIds(List<Long> ids) {
+        return repository.findAllByBooksIdIn(ids);
     }
 }

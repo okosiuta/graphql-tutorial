@@ -3,26 +3,28 @@ package com.tutorial.graphql.graphqltutorial.graphql.resolver.book;
 import com.tutorial.graphql.graphqltutorial.model.dao.Author;
 import com.tutorial.graphql.graphqltutorial.model.dao.Book;
 import com.tutorial.graphql.graphqltutorial.model.dao.Review;
-import com.tutorial.graphql.graphqltutorial.service.AuthorService;
-import com.tutorial.graphql.graphqltutorial.service.ReviewService;
 import graphql.kickstart.tools.GraphQLResolver;
+import graphql.schema.DataFetchingEnvironment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
+
+import static com.tutorial.graphql.graphqltutorial.constant.DataLoaderName.AUTHORS_BY_BOOK_IDS;
+import static com.tutorial.graphql.graphqltutorial.constant.DataLoaderName.REVIEWS_BY_BOOK_IDS;
 
 @Component
 @RequiredArgsConstructor
 public class BookResolver implements GraphQLResolver<Book> {
 
-    private final AuthorService authorService;
-    private final ReviewService reviewService;
-
-    public List<Author> getAuthors(Book book) {
-        return authorService.findAllByBookId(book.getId());
+    public CompletableFuture<Collection<Author>> getAuthors(Book book, DataFetchingEnvironment environment) {
+        return environment.<Long, Collection<Author>>getDataLoader(AUTHORS_BY_BOOK_IDS)
+                .load(book.getId());
     }
 
-    public List<Review> getReviews(Book book) {
-        return reviewService.findAllByBookId(book.getId());
+    public CompletableFuture<Collection<Review>> getReviews(Book book, DataFetchingEnvironment environment) {
+        return environment.<Long, Collection<Review>>getDataLoader(REVIEWS_BY_BOOK_IDS)
+                .load(book.getId());
     }
 }

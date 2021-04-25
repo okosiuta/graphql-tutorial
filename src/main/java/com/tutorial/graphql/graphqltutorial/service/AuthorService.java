@@ -11,5 +11,5 @@ public interface AuthorService {
 
     List<Author> findAll();
 
-    List<Author> findAllByBookId(long id);
+    List<Author> findAllByBookIds(List<Long> ids);
 }

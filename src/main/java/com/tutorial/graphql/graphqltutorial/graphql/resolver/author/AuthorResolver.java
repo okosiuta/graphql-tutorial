@@ -2,20 +2,20 @@ package com.tutorial.graphql.graphqltutorial.graphql.resolver.author;
 
 import com.tutorial.graphql.graphqltutorial.model.dao.Author;
 import com.tutorial.graphql.graphqltutorial.model.dao.Book;
-import com.tutorial.graphql.graphqltutorial.service.BookService;
 import graphql.kickstart.tools.GraphQLResolver;
-import lombok.RequiredArgsConstructor;
+import graphql.schema.DataFetchingEnvironment;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
+
+import static com.tutorial.graphql.graphqltutorial.constant.DataLoaderName.BOOKS_BY_AUTHOR_IDS;
 
 @Component
-@RequiredArgsConstructor
 public class AuthorResolver implements GraphQLResolver<Author> {
 
-    private final BookService bookService;
-
-    public List<Book> getBooks(Author author) {
-        return bookService.findAllByAuthorId(author.getId());
+    public CompletableFuture<Collection<Book>> getBooks(Author author, DataFetchingEnvironment environment) {
+        return environment.<Long, Collection<Book>>getDataLoader(BOOKS_BY_AUTHOR_IDS)
+                .load(author.getId());
     }
 }

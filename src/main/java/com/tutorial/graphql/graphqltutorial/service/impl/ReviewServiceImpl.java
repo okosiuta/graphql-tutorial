@@ -26,12 +26,12 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<Review> findAllByBookId(long id) {
-        return repository.findAllByBookId(id);
+    public List<Review> findAllByBookIds(List<Long> ids) {
+        return repository.findAllByBookIds(ids);
     }
 
     @Override
-    public List<Review> findAllByUserId(long id) {
-        return repository.findAllByUserId(id);
+    public List<Review> findAllByUserIds(List<Long> ids) {
+        return repository.findAllByUserIds(ids);
     }
 }
