@@ -16,6 +16,11 @@ public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository repository;
 
     @Override
+    public Review save(Review review) {
+        return repository.save(review);
+    }
+
+    @Override
     public Optional<Review> findById(long id) {
         return repository.findById(id);
     }

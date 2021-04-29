@@ -1,5 +1,6 @@
 package com.tutorial.graphql.graphqltutorial.model.dao;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @Setter
 @Entity
+@EqualsAndHashCode(exclude = {"books"})
 public class Author {
 
     @Id

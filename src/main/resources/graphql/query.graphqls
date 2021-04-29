@@ -1,38 +1,13 @@
 type Query {
-    bookById(id: ID!): Book!
-    books: [Book!]!
+    findBookById(id: ID!): Book
+    findAllBooks: [Book!]
 
-    authorById(id: ID!): Author!
-    authors: [Author!]!
+    findAuthorById(id: ID!): Author
+    findAllAuthors: [Author!]
 
-    userById(id: ID!): User!
-    users: [User!]!
+    findUserById(id: ID!): User
+    findAllUsers: [User!]
 
-    reviewById(id: ID!): Review!
-    reviews: [Review!]!
+    findReviewById(id: ID!): Review
+    findAllReviews: [Review!]
 }
-
-
-
-query GetBooksAndAuthors {      #query declaration
-    books {                     #books Query
-        name                    #response field
-        pageCount               #response field
-    }
-
-    authors {                   #authors Query
-        firstName               #response field
-        lastName                #response field
-    }
-}
-
-
-query GetBookById($id: ID!) {      #query declaration with arg
-    book(id: $id) {                #book Query
-        name                       #response field
-        description                #response field
-        pageCount                  #response field
-    }
-}
-
-

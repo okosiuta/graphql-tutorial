@@ -1,6 +1,7 @@
 package com.tutorial.graphql.graphqltutorial.model.dao;
 
 import com.tutorial.graphql.graphqltutorial.enumeration.UserType;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @Entity
 @Table(name = "`user`")
+@EqualsAndHashCode(exclude = {"reviews"})
 public class User {
 
     @Id

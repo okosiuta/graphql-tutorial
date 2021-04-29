@@ -1,7 +1,7 @@
 package com.tutorial.graphql.graphqltutorial.graphql.resolver.review;
 
+import com.tutorial.graphql.graphqltutorial.facade.ReviewApi;
 import com.tutorial.graphql.graphqltutorial.model.dao.Review;
-import com.tutorial.graphql.graphqltutorial.service.ReviewService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,13 +12,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReviewQueryResolver implements GraphQLQueryResolver {
 
-    private final ReviewService service;
+    private final ReviewApi api;
 
-    public Review reviewById(long id) {
-        return service.findById(id).orElseThrow();
+    public Review findReviewById(long id) {
+        return api.findById(id);
     }
 
-    public List<Review> reviews() {
-        return service.findAll();
+    public List<Review> findAllReviews() {
+        return api.findAll();
     }
 }

@@ -1,6 +1,7 @@
 package com.tutorial.graphql.graphqltutorial.model.dao;
 
 import com.tutorial.graphql.graphqltutorial.enumeration.BookGenre;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @Setter
 @Entity
+@EqualsAndHashCode(exclude = {"authors", "reviews"})
 public class Book {
 
     @Id

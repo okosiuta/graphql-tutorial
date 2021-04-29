@@ -6,6 +6,7 @@ import com.tutorial.graphql.graphqltutorial.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,13 +17,28 @@ public class AuthorServiceImpl implements AuthorService {
     private final AuthorRepository repository;
 
     @Override
+    public Author save(Author author) {
+        return repository.save(author);
+    }
+
+    @Override
     public Optional<Author> findById(long id) {
         return repository.findById(id);
     }
 
     @Override
+    public Optional<Author> findByIdWithBooks(long id) {
+        return repository.findByIdWithBooks(id);
+    }
+
+    @Override
     public List<Author> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Author> findAllByIds(Collection<Long> ids) {
+        return repository.findAllById(ids);
     }
 
     @Override

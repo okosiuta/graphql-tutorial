@@ -10,3 +10,7 @@ spring:
       ddl-auto: create-drop
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+graphql:
+  servlet:
+    exception-handlers-enabled: true
+    max-query-depth: 15

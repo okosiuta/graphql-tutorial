@@ -1,7 +1,5 @@
-
-
-                interface Model {
-                    id: ID!
-                }
+interface Model {
+    id: ID!
+}
 
 

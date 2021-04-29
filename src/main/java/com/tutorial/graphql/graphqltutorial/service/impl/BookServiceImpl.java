@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -26,6 +27,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public Optional<Book> findByIdWithAuthors(long id) {
+        return repository.findByIdWithAuthors(id);
+    }
+
+    @Override
     public List<Book> findAll() {
         return repository.findAll();
     }
@@ -38,5 +44,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findAllByReviewIds(List<Long> ids) {
         return repository.findAllByReviewIds(ids);
+    }
+
+    @Override
+    public List<Book> findAllByIds(Set<Long> ids) {
+        return repository.findAllById(ids);
     }
 }

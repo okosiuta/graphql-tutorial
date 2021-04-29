@@ -1,18 +1,24 @@
 package com.tutorial.graphql.graphqltutorial.graphql.mutation;
 
+import com.tutorial.graphql.graphqltutorial.facade.BookApi;
 import com.tutorial.graphql.graphqltutorial.model.dao.Book;
-import com.tutorial.graphql.graphqltutorial.service.BookService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
 public class BookMutation implements GraphQLMutationResolver {
 
-    private final BookService service;
+    private final BookApi api;
 
     public Book createBook(Book book) {
-        return service.save(book);
+        return api.create(book);
+    }
+
+    public Book addBookAuthors(long bookId, Set<Long> authorIds) {
+        return api.addBookAuthors(bookId, authorIds);
     }
 }

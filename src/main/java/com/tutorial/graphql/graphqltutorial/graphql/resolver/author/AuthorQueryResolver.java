@@ -1,7 +1,7 @@
 package com.tutorial.graphql.graphqltutorial.graphql.resolver.author;
 
+import com.tutorial.graphql.graphqltutorial.facade.AuthorApi;
 import com.tutorial.graphql.graphqltutorial.model.dao.Author;
-import com.tutorial.graphql.graphqltutorial.service.AuthorService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -12,13 +12,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AuthorQueryResolver implements GraphQLQueryResolver {
 
-    private final AuthorService service;
+    private final AuthorApi api;
 
-    public Author authorById(long id) {
-        return service.findById(id).orElseThrow();
+    public Author findAuthorById(long id) {
+        return api.findById(id);
     }
 
-    public List<Author> authors() {
-        return service.findAll();
+    public List<Author> findAllAuthors() {
+        return api.findAll();
     }
 }

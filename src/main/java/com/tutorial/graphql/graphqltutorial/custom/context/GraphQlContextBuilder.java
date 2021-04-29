@@ -15,7 +15,7 @@ import javax.websocket.server.HandshakeRequest;
 
 @Component
 @RequiredArgsConstructor
-public class CustomGraphQLContextBuilder implements GraphQLServletContextBuilder {
+public class GraphQlContextBuilder implements GraphQLServletContextBuilder {
 
     private final DataLoaderRegistry dataLoaderRegistry;
 
