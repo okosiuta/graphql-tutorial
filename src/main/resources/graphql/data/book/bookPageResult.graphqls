@@ -1,0 +1,5 @@
+type BookPageResult {
+    totalElements: Int!
+    content: [Book]!
+    pageable: Pageable!
+}

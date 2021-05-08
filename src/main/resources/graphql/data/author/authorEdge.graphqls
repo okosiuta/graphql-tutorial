@@ -1,0 +1,4 @@
+type AuthorEdge {
+    cursor: String!
+    node: Author!
+}

@@ -1,6 +1,6 @@
 package com.tutorial.graphql.graphqltutorial.config;
 
-import com.tutorial.graphql.graphqltutorial.dataloader.BatchDataLoader;
+import com.tutorial.graphql.graphqltutorial.custom.dataloader.NamedDataLoader;
 import org.dataloader.DataLoader;
 import org.dataloader.DataLoaderRegistry;
 import org.springframework.context.annotation.Bean;
@@ -12,7 +12,7 @@ import java.util.List;
 public class DataLoaderConfig {
 
     @Bean
-    public DataLoaderRegistry dataLoaderRegistry(List<BatchDataLoader<?, ?>> loaders) {
+    public DataLoaderRegistry dataLoaderRegistry(List<NamedDataLoader<?, ?>> loaders) {
         var dataLoaderRegistry = new DataLoaderRegistry();
 
         loaders.forEach(loader -> dataLoaderRegistry.register(loader.getLoaderName(), createLoader(loader)));
@@ -20,7 +20,7 @@ public class DataLoaderConfig {
         return dataLoaderRegistry;
     }
 
-    private DataLoader<?, ?> createLoader(BatchDataLoader<?, ?> loader) {
+    private DataLoader<?, ?> createLoader(NamedDataLoader<?, ?> loader) {
         return DataLoader.newDataLoader(loader, loader.getDataLoaderOptions());
     }
 }

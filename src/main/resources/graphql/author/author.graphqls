@@ -1,5 +1,0 @@
-type Author implements Model {
-    id: ID!
-    name: String!
-    books: [Book!]!
-}

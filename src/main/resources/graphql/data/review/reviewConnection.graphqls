@@ -1,0 +1,5 @@
+type ReviewConnection {
+    edges: [ReviewEdge]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}

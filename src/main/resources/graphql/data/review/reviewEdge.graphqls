@@ -1,0 +1,4 @@
+type ReviewEdge {
+    cursor: String!
+    node: Review!
+}

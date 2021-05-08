@@ -4,6 +4,8 @@ import com.tutorial.graphql.graphqltutorial.model.dao.Author;
 import com.tutorial.graphql.graphqltutorial.repository.AuthorRepository;
 import com.tutorial.graphql.graphqltutorial.service.AuthorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -27,13 +29,18 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Optional<Author> findByIdWithBooks(long id) {
-        return repository.findByIdWithBooks(id);
+    public List<Author> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public List<Author> findAll() {
-        return repository.findAll();
+    public Page<Author> findAll(long cursor, Pageable pageable) {
+        return repository.findAll(cursor, pageable);
+    }
+
+    @Override
+    public Page<Author> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     @Override
@@ -42,7 +49,17 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public List<Author> findAllByBookIds(List<Long> ids) {
+    public List<Author> findAllByBookIds(Collection<Long> ids) {
         return repository.findAllByBooksIdIn(ids);
+    }
+
+    @Override
+    public boolean hasWithIdBefore(long id) {
+        return repository.existsByIdIsBefore(id);
+    }
+
+    @Override
+    public boolean hasWithIdAfter(long id) {
+        return repository.existsByIdIsAfter(id);
     }
 }

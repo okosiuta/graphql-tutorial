@@ -1,10 +1,12 @@
 package com.tutorial.graphql.graphqltutorial.service;
 
 import com.tutorial.graphql.graphqltutorial.model.dao.Book;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public interface BookService {
 
@@ -12,13 +14,19 @@ public interface BookService {
 
     Optional<Book> findById(long id);
 
-    Optional<Book> findByIdWithAuthors(long id);
-
     List<Book> findAll();
 
-    List<Book> findAllByAuthorIds(List<Long> ids);
+    Page<Book> findAll(long cursor, Pageable pageable);
 
-    List<Book> findAllByReviewIds(List<Long> ids);
+    Page<Book> findAll(Pageable pageable);
 
-    List<Book> findAllByIds(Set<Long> ids);
+    List<Book> findAllByAuthorIds(Collection<Long> ids);
+
+    List<Book> findAllByReviewIds(Collection<Long> ids);
+
+    List<Book> findAllByIds(Collection<Long> ids);
+
+    boolean hasWithIdBefore(long id);
+
+    boolean hasWithIdAfter(long id);
 }

@@ -1,6 +1,0 @@
-type User implements Model {
-    id: ID!
-    name: String!
-    type: UserType!
-    reviews: [Review!]!
-}

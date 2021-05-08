@@ -1,13 +1,21 @@
 type Query {
-    findBookById(id: ID!): Book
-    findAllBooks: [Book!]
+    getBookById(id: ID!): Book
+    getAllBooks: [Book]
+    getBookPageResult(page: Int!, size: Int!): BookPageResult
+    getBookConnection(first: Int!, after: String): BookConnection
 
-    findAuthorById(id: ID!): Author
-    findAllAuthors: [Author!]
+    getAuthorById(id: ID!): Author
+    getAllAuthors: [Author]
+    getAuthorPageResult(page: Int!, size: Int!): AuthorPageResult
+    getAuthorConnection(first: Int!, after: String): AuthorConnection
 
-    findUserById(id: ID!): User
-    findAllUsers: [User!]
+    getUserById(id: ID!): User
+    getAllUsers: [User]
+    getUserPageResult(page: Int!, size: Int!): UserPageResult
+    getUserConnection(first: Int!, after: String): UserConnection
 
-    findReviewById(id: ID!): Review
-    findAllReviews: [Review!]
+    getReviewById(id: ID!): Review
+    getAllReviews: [Review]
+    getReviewPageResult(page: Int!, size: Int!): ReviewPageResult
+    getReviewConnection(first: Int!, after: String): ReviewConnection
 }

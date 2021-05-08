@@ -1,6 +1,6 @@
 package com.tutorial.graphql.graphqltutorial.graphql.mutation;
 
-import com.tutorial.graphql.graphqltutorial.facade.ReviewApi;
+import com.tutorial.graphql.graphqltutorial.api.ReviewApi;
 import com.tutorial.graphql.graphqltutorial.model.dao.Review;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import lombok.RequiredArgsConstructor;

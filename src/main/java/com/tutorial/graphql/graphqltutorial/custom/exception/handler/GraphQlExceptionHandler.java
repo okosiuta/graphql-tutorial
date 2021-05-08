@@ -18,10 +18,12 @@ public class GraphQlExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     public GraphQLError handle(Throwable th) {
-        log.error(format(UNEXPECTED, th.getMessage()), th);
+        var errorMessage = format(UNEXPECTED, th.getMessage());
+
+        log.error(errorMessage, th);
 
         return GraphqlErrorBuilder.newError()
-                .message(th.getMessage())
+                .message(errorMessage)
                 .errorType(UNEXPECTED_ERROR)
                 .build();
     }

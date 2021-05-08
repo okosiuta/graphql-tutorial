@@ -1,0 +1,4 @@
+type UserEdge {
+    cursor: String!
+    node: User!
+}

@@ -1,0 +1,5 @@
+type ReviewPageResult {
+    totalElements: Int!
+    content: [Review]!
+    pageable: Pageable!
+}

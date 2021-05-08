@@ -1,0 +1,5 @@
+type AuthorConnection {
+    edges: [AuthorEdge]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}

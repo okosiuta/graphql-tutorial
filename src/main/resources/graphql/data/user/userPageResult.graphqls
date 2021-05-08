@@ -1,0 +1,5 @@
+type UserPageResult {
+    totalElements: Int!
+    content: [User]!
+    pageable: Pageable!
+}

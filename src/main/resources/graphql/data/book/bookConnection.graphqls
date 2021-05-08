@@ -1,0 +1,5 @@
+type BookConnection {
+    edges: [BookEdge]!
+    pageInfo: PageInfo!
+    totalCount: Int!
+}

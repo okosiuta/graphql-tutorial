@@ -1,0 +1,5 @@
+type AuthorPageResult {
+    totalElements: Int!
+    content: [Author]!
+    pageable: Pageable!
+}

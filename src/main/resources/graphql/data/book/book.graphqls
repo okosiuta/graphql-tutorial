@@ -1,0 +1,9 @@
+type Book implements Model {    #Object type declaration
+    id: ID!                     #Non-nullable ID scalar
+    name: String!               #Non-nullable String scalar
+    description: String         #Nullable String scalar
+    genre: BookGenre!           #Non-nullable BookGenre enum
+    authors: [Author]!         #Non-nullable list of non-nullabele object types
+    reviews: [Review]!         #Non-nullable list of non-nullabele object types
+}
+

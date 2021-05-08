@@ -1,9 +1,9 @@
 type Mutation {
     createBook(book: CreateBookInput!): Book
-    addBookAuthors(bookId: ID!, authorIds: [ID!]!): Book
+    addBookAuthors(bookId: ID!, authorIds: [ID]!): Book
 
     createAuthor(author: CreateAuthorInput!): Author
-    addAuthorBooks(authorId: ID!, bookIds: [ID!]!): Author
+    addAuthorBooks(authorId: ID!, bookIds: [ID]!): Author
 
     createUser(user: CreateUserInput!): User
 
