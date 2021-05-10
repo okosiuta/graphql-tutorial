@@ -4,8 +4,10 @@ import com.tutorial.graphql.graphqltutorial.enumeration.BookGenre;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,6 +42,10 @@ public class Book {
 
     @Enumerated(STRING)
     private BookGenre genre;
+
+    @CreationTimestamp
+    @Column(columnDefinition = "timestamp default (now() at time zone 'utc')")
+    private LocalDateTime createdAt;
 
     private String name;
     private String description;

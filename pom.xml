@@ -16,6 +16,8 @@
 	<properties>
 		<java.version>15</java.version>
 		<postgresql.version>42.2.18</postgresql.version>
+		<graphql-starter.version>11.0.0</graphql-starter.version>
+		<graphql-java-extended-scalars.version>16.0.1</graphql-java-extended-scalars.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -37,16 +39,27 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>graphql-java-extended-scalars</artifactId>
+			<version>${graphql-java-extended-scalars.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.graphql-java</groupId>
+					<artifactId>graphql-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
 			<groupId>com.graphql-java-kickstart</groupId>
 			<artifactId>graphql-spring-boot-starter</artifactId>
-			<version>11.0.0</version>
+			<version>${graphql-starter.version}</version>
 		</dependency>
 
 		<!-- to embed Altair tool -->
 		<dependency>
 			<groupId>com.graphql-java-kickstart</groupId>
 			<artifactId>altair-spring-boot-starter</artifactId>
-			<version>11.0.0</version>
+			<version>${graphql-starter.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -54,7 +67,7 @@
 		<dependency>
 			<groupId>com.graphql-java-kickstart</groupId>
 			<artifactId>graphiql-spring-boot-starter</artifactId>
-			<version>11.0.0</version>
+			<version>${graphql-starter.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -62,7 +75,7 @@
 		<dependency>
 			<groupId>com.graphql-java-kickstart</groupId>
 			<artifactId>voyager-spring-boot-starter</artifactId>
-			<version>11.0.0</version>
+			<version>${graphql-starter.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -70,7 +83,7 @@
 		<dependency>
 			<groupId>com.graphql-java-kickstart</groupId>
 			<artifactId>graphql-spring-boot-starter-test</artifactId>
-			<version>11.0.0</version>
+			<version>${graphql-starter.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -99,6 +112,7 @@
 							<version>${lombok.version}</version>
 						</path>
 					</annotationProcessorPaths>
+					<compilerArgs>--enable-preview</compilerArgs>
 				</configuration>
 			</plugin>
 		</plugins>

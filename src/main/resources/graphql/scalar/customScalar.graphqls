@@ -1,0 +1,6 @@
+#defined by myself (LocalDateTime)
+scalar LocalDateTime
+
+#defined by library (graphql-java-extended-scalars) (LocalDate)
+#not used just an example
+scalar Date

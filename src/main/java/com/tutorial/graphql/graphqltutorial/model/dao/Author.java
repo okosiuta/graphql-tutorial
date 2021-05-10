@@ -3,11 +3,10 @@ package com.tutorial.graphql.graphqltutorial.model.dao;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +24,10 @@ public class Author {
 
     @ManyToMany(mappedBy = "authors")
     private final Set<Book> books = new HashSet<>();
+
+    @CreationTimestamp
+    @Column(columnDefinition = "timestamp default (now() at time zone 'utc')")
+    private LocalDateTime createdAt;
 
     private String name;
 }

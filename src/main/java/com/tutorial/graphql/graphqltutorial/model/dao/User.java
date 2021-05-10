@@ -4,8 +4,10 @@ import com.tutorial.graphql.graphqltutorial.enumeration.UserType;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,6 +34,10 @@ public class User {
 
     @Enumerated(value = STRING)
     private UserType type;
+
+    @CreationTimestamp
+    @Column(columnDefinition = "timestamp default (now() at time zone 'utc')")
+    private LocalDateTime createdAt;
 
     private String name;
 }

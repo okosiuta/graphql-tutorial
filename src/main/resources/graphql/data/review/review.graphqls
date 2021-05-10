@@ -3,4 +3,5 @@ type Review implements Model {
     user: User!
     book: Book!
     text: String!
+    createdAt: LocalDateTime!
 }

@@ -6,10 +6,14 @@ import org.dataloader.DataLoaderRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.TimeZone;
+
+import static java.time.ZoneOffset.UTC;
 
 @Configuration
-public class DataLoaderConfig {
+public class AppConfig {
 
     @Bean
     public DataLoaderRegistry dataLoaderRegistry(List<NamedDataLoader<?, ?>> loaders) {
@@ -22,5 +26,10 @@ public class DataLoaderConfig {
 
     private DataLoader<?, ?> createLoader(NamedDataLoader<?, ?> loader) {
         return DataLoader.newDataLoader(loader, loader.getDataLoaderOptions());
+    }
+
+    @PostConstruct
+    private void onStart() {
+        TimeZone.setDefault(TimeZone.getTimeZone(UTC.getId()));
     }
 }

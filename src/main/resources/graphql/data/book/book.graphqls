@@ -5,5 +5,6 @@ type Book implements Model {    #Object type declaration
     genre: BookGenre!           #Non-nullable BookGenre enum
     authors: [Author]!         #Non-nullable list of non-nullabele object types
     reviews: [Review]!         #Non-nullable list of non-nullabele object types
+    createdAt: LocalDateTime!
 }
 

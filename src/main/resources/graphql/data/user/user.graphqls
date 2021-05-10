@@ -3,4 +3,6 @@ type User implements Model {
     name: String!
     type: UserType!
     reviews: [Review]!
+    createdAt: LocalDateTime!
+    propertyFetchedFromNotReliableService: String
 }
