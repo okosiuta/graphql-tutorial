@@ -1,6 +1,6 @@
 package com.tutorial.graphql.graphqltutorial.config;
 
-import com.tutorial.graphql.graphqltutorial.custom.dataloader.NamedDataLoader;
+import com.tutorial.graphql.graphqltutorial.custom.dataloader.NamedBatchDataLoader;
 import org.dataloader.DataLoader;
 import org.dataloader.DataLoaderRegistry;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +16,7 @@ import static java.time.ZoneOffset.UTC;
 public class AppConfig {
 
     @Bean
-    public DataLoaderRegistry dataLoaderRegistry(List<NamedDataLoader<?, ?>> loaders) {
+    public DataLoaderRegistry dataLoaderRegistry(List<NamedBatchDataLoader<?, ?>> loaders) {
         var dataLoaderRegistry = new DataLoaderRegistry();
 
         loaders.forEach(loader -> dataLoaderRegistry.register(loader.getLoaderName(), createLoader(loader)));
@@ -24,7 +24,7 @@ public class AppConfig {
         return dataLoaderRegistry;
     }
 
-    private DataLoader<?, ?> createLoader(NamedDataLoader<?, ?> loader) {
+    private DataLoader<?, ?> createLoader(NamedBatchDataLoader<?, ?> loader) {
         return DataLoader.newDataLoader(loader, loader.getDataLoaderOptions());
     }
 

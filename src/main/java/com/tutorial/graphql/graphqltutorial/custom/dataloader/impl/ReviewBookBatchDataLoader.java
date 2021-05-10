@@ -1,6 +1,6 @@
 package com.tutorial.graphql.graphqltutorial.custom.dataloader.impl;
 
-import com.tutorial.graphql.graphqltutorial.custom.dataloader.NamedDataLoader;
+import com.tutorial.graphql.graphqltutorial.custom.dataloader.NamedBatchDataLoader;
 import com.tutorial.graphql.graphqltutorial.model.dao.Book;
 import com.tutorial.graphql.graphqltutorial.service.BookService;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,7 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 @Component
 @RequiredArgsConstructor
-public class ReviewBookDataLoader implements NamedDataLoader<Long, Book> {
+public class ReviewBookBatchDataLoader implements NamedBatchDataLoader<Long, Book> {
 
     private final BookService bookService;
 

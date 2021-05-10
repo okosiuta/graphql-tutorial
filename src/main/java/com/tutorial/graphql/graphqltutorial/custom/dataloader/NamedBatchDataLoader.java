@@ -3,7 +3,7 @@ package com.tutorial.graphql.graphqltutorial.custom.dataloader;
 import org.dataloader.BatchLoader;
 import org.dataloader.DataLoaderOptions;
 
-public interface NamedDataLoader<T, R> extends BatchLoader<T, R> {
+public interface NamedBatchDataLoader<T, R> extends BatchLoader<T, R> {
 
     String getLoaderName();
 
