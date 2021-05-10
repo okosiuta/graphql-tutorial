@@ -18,6 +18,7 @@
 		<postgresql.version>42.2.18</postgresql.version>
 		<graphql-starter.version>11.0.0</graphql-starter.version>
 		<graphql-java-extended-scalars.version>16.0.1</graphql-java-extended-scalars.version>
+		<react-core.version>3.4.5</react-core.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -53,6 +54,11 @@
 			<groupId>com.graphql-java-kickstart</groupId>
 			<artifactId>graphql-spring-boot-starter</artifactId>
 			<version>${graphql-starter.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-core</artifactId>
+			<version>${react-core.version}</version>
 		</dependency>
 
 		<!-- to embed Altair tool -->

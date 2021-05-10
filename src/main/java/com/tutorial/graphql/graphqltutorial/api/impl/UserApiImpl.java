@@ -4,6 +4,7 @@ import com.tutorial.graphql.graphqltutorial.api.UserApi;
 import com.tutorial.graphql.graphqltutorial.custom.exception.ResourceNotFoundException;
 import com.tutorial.graphql.graphqltutorial.custom.pagination.ExtendedConnection;
 import com.tutorial.graphql.graphqltutorial.model.dao.User;
+import com.tutorial.graphql.graphqltutorial.publisher.AbstractPublisher;
 import com.tutorial.graphql.graphqltutorial.service.UserService;
 import graphql.relay.DefaultEdge;
 import graphql.relay.DefaultPageInfo;
@@ -32,6 +33,7 @@ import static org.springframework.util.CollectionUtils.lastElement;
 @RequiredArgsConstructor
 public class UserApiImpl implements UserApi {
 
+    private final AbstractPublisher<User> publisher;
     private final UserService userService;
 
     @Override
@@ -47,7 +49,10 @@ public class UserApiImpl implements UserApi {
 
     @Override
     public User create(User user) {
-        return userService.save(user);
+        var createdUser = userService.save(user);
+
+        publisher.publish(createdUser);
+        return createdUser;
     }
 
     @Override

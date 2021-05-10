@@ -6,7 +6,7 @@ import graphql.relay.Edge;
 
 import java.nio.ByteBuffer;
 
-import static graphql.com.google.common.primitives.Longs.BYTES;
+import static java.lang.Long.BYTES;
 import static java.util.Base64.getDecoder;
 import static java.util.Base64.getEncoder;
 import static java.util.Objects.nonNull;

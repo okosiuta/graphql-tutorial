@@ -4,6 +4,7 @@ import com.tutorial.graphql.graphqltutorial.api.BookApi;
 import com.tutorial.graphql.graphqltutorial.custom.exception.ResourceNotFoundException;
 import com.tutorial.graphql.graphqltutorial.custom.pagination.ExtendedConnection;
 import com.tutorial.graphql.graphqltutorial.model.dao.Book;
+import com.tutorial.graphql.graphqltutorial.publisher.AbstractPublisher;
 import com.tutorial.graphql.graphqltutorial.service.AuthorService;
 import com.tutorial.graphql.graphqltutorial.service.BookService;
 import graphql.relay.DefaultEdge;
@@ -34,6 +35,7 @@ import static org.springframework.util.CollectionUtils.lastElement;
 @RequiredArgsConstructor
 public class BookApiImpl implements BookApi {
 
+    private final AbstractPublisher<Book> publisher;
     private final BookService bookService;
     private final AuthorService authorService;
 
@@ -50,7 +52,10 @@ public class BookApiImpl implements BookApi {
 
     @Override
     public Book create(Book book) {
-        return bookService.save(book);
+        var createdBook = bookService.save(book);
+
+        publisher.publish(createdBook);
+        return createdBook;
     }
 
     @Override

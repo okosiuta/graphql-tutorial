@@ -6,6 +6,7 @@ import com.tutorial.graphql.graphqltutorial.custom.pagination.ExtendedConnection
 import com.tutorial.graphql.graphqltutorial.model.dao.Book;
 import com.tutorial.graphql.graphqltutorial.model.dao.Review;
 import com.tutorial.graphql.graphqltutorial.model.dao.User;
+import com.tutorial.graphql.graphqltutorial.publisher.AbstractPublisher;
 import com.tutorial.graphql.graphqltutorial.service.BookService;
 import com.tutorial.graphql.graphqltutorial.service.ReviewService;
 import com.tutorial.graphql.graphqltutorial.service.UserService;
@@ -36,6 +37,7 @@ import static org.springframework.util.CollectionUtils.lastElement;
 @RequiredArgsConstructor
 public class ReviewApiImpl implements ReviewApi {
 
+    private final AbstractPublisher<Review> publisher;
     private final ReviewService reviewService;
     private final UserService userService;
     private final BookService bookService;
@@ -55,13 +57,11 @@ public class ReviewApiImpl implements ReviewApi {
     public Review create(long userId, long bookId, String text) {
         var book = findBookById(bookId);
         var user = findUserById(userId);
-        var review = Review.builder()
-                .book(book)
-                .user(user)
-                .text(text)
-                .build();
+        var review = createReview(book, user, text);
+        var createdReview = reviewService.save(review);
 
-        return reviewService.save(review);
+        publisher.publish(createdReview);
+        return createdReview;
     }
 
     private Book findBookById(long id) {
@@ -72,6 +72,14 @@ public class ReviewApiImpl implements ReviewApi {
     private User findUserById(long id) {
         return userService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(format(RESOURCE_NOT_FOUND, USERS, id)));
+    }
+
+    private Review createReview(Book book, User user, String text) {
+        return Review.builder()
+                .book(book)
+                .user(user)
+                .text(text)
+                .build();
     }
 
     @Override

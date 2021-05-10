@@ -1,0 +1,6 @@
+type Subscription {
+    getNewAuthors: Author
+    getNewBooks: Book
+    getNewReviews: Review
+    getNewUsers: User
+}
